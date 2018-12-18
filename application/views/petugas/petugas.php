@@ -13,22 +13,22 @@
 					</tr>
 				</thead>
 				<tbody>
-					<?php foreach($petugas as $p){ ?>
+					<?php foreach($petugas as $data){ ?>
 					<tr>
 						<td>
-							<?php echo $p['nik'];?>
+							<?php echo $data['nik'];?>
 						</td>
 						<td>
-							<?php echo ucwords($p['nama']);?>
+							<?php echo ucwords($data['nama']);?>
 						</td>
 						<td>
-							<?php echo ucwords($p['status']);?>
+							<?php echo ucwords($data['status']);?>
 						</td>
 						<td>
-							<?php echo ucwords($p['role']);?>
+							<?php echo ucwords($data['role']);?>
 						</td>
 						<td>
-							<a href="<?php echo base_url('petugas/lihat');?>">Lihat</a>
+							<a href="<?php echo base_url('petugas/lihat/'.$data["nik"].'');?>">Lihat</a>
 							<a href="<?php echo base_url('petugas/ubah');?>">Ubah</a>
 							<a href="<?php echo base_url('petugas/hapus');?>">Hapus</a>
 						</td>

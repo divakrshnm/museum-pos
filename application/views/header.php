@@ -59,7 +59,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">
-                    <?php if(isset($subheading)){echo $subheading;}else{echo 'Beranda';} ?>
+                    <?php if(isset($subheading) && !isset($subsubheading)){echo $subheading;}else if(isset($subsubheading)){echo ucwords($subsubheading);}else{echo 'Beranda';} ?>
                 </h1>
                 <ol class="breadcrumb">
                     <li class="active">
@@ -76,7 +76,7 @@
                     if(isset($subsubheading)){
                         ?>
                     <li class="active">
-                         <i class="fa fa-file"></i> <?php echo $subsubheading;?>
+                         <i class="fa fa-file"></i> <?php echo ucwords($subsubheading);?>
                          </i>
                          <?php
                     }

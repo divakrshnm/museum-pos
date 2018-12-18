@@ -7,7 +7,7 @@
 					<tr>
                     <th>No.</th>
         <th>Nama</th>
-        <th>Kritik Saran</th>
+        <th>Aksi</th>
 					</tr>
 				</thead>
 				<tbody>

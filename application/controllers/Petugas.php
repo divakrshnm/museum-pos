@@ -23,6 +23,15 @@ class Petugas extends CI_Controller{
         $this->load->view('petugas/petugas', $data);
         $this->load->view('footer');
     }
+    function lihat($nik){
+        $data['subheading'] = 'Petugas';
+        $data['subheadingurl'] = 'petugas';
+        $data['subsubheading'] = $this->m_petugas->tampil_detail($nik)->row()->nama;
+        $this->load->view('header', $data);
+        $data['petugas'] = $this->m_petugas->tampil_detail($nik)->row_array();
+        $this->load->view('petugas/detail-petugas', $data);
+        $this->load->view('footer');
+    }
 
 }
 

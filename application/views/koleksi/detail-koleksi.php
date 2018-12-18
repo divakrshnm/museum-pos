@@ -131,7 +131,10 @@ echo '<td><img src="data:image/jpeg;base64,'.$foto.'"></td>';
 		<td>Kode QR</td>
 		<td>:</td>
 		<td>
-			<?php echo $koleksi['kode_qr']; ?>
+		<?php
+                                $kode_qr = base64_encode(file_get_contents($koleksi['kode_qr']));
+                                echo '<img src="data:image/jpeg;base64,'.$kode_qr.'">';
+                            ?>
 		</td>
 	</tr>
 	<tr>
