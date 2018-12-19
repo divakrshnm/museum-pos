@@ -1,4 +1,9 @@
 <div class="row">
+<div class="col-lg-12 text-right">
+<a href="<?php echo base_url().'koleksi/tambah'; ?>" class="btn btn-primary">Tambah Data</a>
+</div>
+</div>
+<div class="row">
 	<div class="col-lg-12">
 		<h2>Data Koleksi</h2>
 		<div class="table-responsive">
@@ -22,8 +27,12 @@
 						</td>
 						<td>
                             <?php
-                                $foto = base64_encode(file_get_contents($data['foto']));
-                                echo '<img src="data:image/jpeg;base64,'.$foto.'">';
+                                if(!empty($data['foto'])){
+									$foto = base64_encode(file_get_contents($data['foto']));
+                                	echo '<img src="data:image/jpeg;base64,'.$foto.'">';
+								}else{
+									echo '-';
+								}
                             ?>
 						</td>
 						<td>
