@@ -14,15 +14,18 @@ class M_koleksi extends CI_Model{
         return $detail;
     }
 
-    function tambah($data, $table){
-        $this->db->insert($table, $data);
+    function tambah($data){
+        $this->db->insert('koleksi', $data);
     }
-    
+
     function cek_no(){
         $this->db->select_max('no_inventaris');
         return $this->db->get('koleksi');
     }
-    
+    function hapus($no_inventaris){
+        $this->db->where('no_inventaris', $no_inventaris);
+        $this->db->delete('koleksi');
+    }    
 
 }
 

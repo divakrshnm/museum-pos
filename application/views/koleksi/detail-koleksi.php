@@ -242,6 +242,6 @@ echo '<td><img src="data:image/jpeg;base64,'.$foto.'"></td>';;
 		</td>
 	</tr>
 </table>
-<a href="<?php echo base_url('koleksi/ubah');?>" class="btn btn-primary">Ubah</a>
-                            <a href="<?php echo base_url('koleksi/hapus');?>" class="btn btn-danger">Hapus</a>
+<a href="<?php echo base_url('koleksi/ubah/'.$koleksi["no_inventaris"].'');?>" class="btn btn-primary">Ubah</a>
+<a href="<?php echo base_url('koleksi/hapus/'.$koleksi["no_inventaris"].'');?>" class="btn btn-danger">Hapus</a>
 <br>

@@ -7,6 +7,7 @@
 					<tr>
                     <th>No.</th>
         <th>Nama</th>
+		<th>Hp</th>
         <th>Aksi</th>
 					</tr>
 				</thead>
@@ -18,9 +19,10 @@
     <tr>
         <td><?php echo $no++;?></td>
         <td><?php echo ucwords($ks['nama']);?></td>
+		<td><?php echo ucwords($ks['no_hp']);?></td>
         <td>
-							<a href="<?php echo base_url('petugas/lihat');?>">Lihat</a>
-							<a href="<?php echo base_url('petugas/hapus');?>">Hapus</a>
+							<a href="<?php echo base_url('kritik-saran/lihat/'.$ks["id"].'');?>">Lihat</a>
+							<a href="<?php echo base_url('kritik-saran/hapus/'.$ks["id"].'');?>">Hapus</a>
 						</td>
     </tr>
     <?php } ?>

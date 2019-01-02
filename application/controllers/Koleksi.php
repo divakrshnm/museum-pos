@@ -41,9 +41,7 @@ class Koleksi extends CI_Controller{
         $this->load->view('footer');
     }
 
-    function tambah_proses(){
-
-        
+    function tambah_proses(){        
         $this->form_validation->set_rules('nama_koleksi', 'Nama Koleksi', 'required',
             array('required' => '%s tidak boleh kosong')
         );
@@ -77,13 +75,11 @@ class Koleksi extends CI_Controller{
                 'kondisi' => set_value('kondisi', ''),
                 'tanggal_pemakaian' => set_value('tanggal_pemakaian', ''),
                 'warna' => set_value('warna', '')
-
             );
             $this->load->view('header', $data);
             $this->load->view('koleksi/tambah-koleksi');
             $this->load->view('footer');
         }else{
-
             $nama_koleksi = $this->input->post('nama_koleksi');
             $jenis = $this->input->post('jenis');
             $tanggal_pembuatan = $this->input->post('tanggal_pembuatan');
@@ -108,70 +104,70 @@ class Koleksi extends CI_Controller{
                 $no_inventaris = "2".substr($this->m_koleksi->cek_no()->row()->no_inventaris, 1)+1;
             }
 
-            $config['upload_path'] = "./uploads/images/";
-            $config['allowed_types'] = 'gif|jpg|png|jpeg';
-            $config['file_name'] = $no_inventaris;
-
-            $this->load->library('upload', $config);
-
             $folder= "./uploads/qrcodes/".$no_inventaris.".png";
             QRcode::png($no_inventaris, $folder, 'H', 20, 5);
 
-            if (!$this->upload->do_upload('foto')){
-                $data = array(
-                    'no_inventaris' => $no_inventaris,
-                    'nama_koleksi' => $nama_koleksi,
-                    'jenis' => $jenis,
-                    'tanggal_pembuatan' => $tanggal_pembuatan,
-                    'bentuk' => $bentuk,
-                    'nilai' => $nilai,
-                    'bahan' => $bahan,
-                    'teknik_pembuatan' => $teknik_pembuatan,
-                    'deskripsi' => $deskripsi,
-                    'tanggal_masuk' => $tanggal_masuk,
-                    'daerah_asal' => $daerah_asal,
-                    'banyaknya' => $banyaknya,
-                    'ukuran' => $ukuran,
-                    'bentuk' => $bentuk,
-                    'sejarah' => $sejarah,
-                    'kondisi' => $kondisi,
-                    'tanggal_pemakaian' => $tanggal_pemakaian,
-                    'warna' => $warna,
-                    'kode_qr' => base_url(substr($folder,2))
-                );
-                $this->m_koleksi->tambah($data,'koleksi');
-            }else{
-                $data = array(
-                    'no_inventaris' => $no_inventaris,
-                    'nama_koleksi' => $nama_koleksi,
-                    'jenis' => $jenis,
-                    'tanggal_pembuatan' => $tanggal_pembuatan,
-                    'bentuk' => $bentuk,
-                    'nilai' => $nilai,
-                    'bahan' => $bahan,
-                    'teknik_pembuatan' => $teknik_pembuatan,
-                    'deskripsi' => $deskripsi,
-                    'tanggal_masuk' => $tanggal_masuk,
-                    'daerah_asal' => $daerah_asal,
-                    'banyaknya' => $banyaknya,
-                    'ukuran' => $ukuran,
-                    'sejarah' => $sejarah,
-                    'kondisi' => $kondisi,
-                    'tanggal_pemakaian' => $tanggal_pemakaian,
-                    'warna' => $warna,
-                    'kode_qr' => $folder,
-                    'foto' => $this->upload->data('full_path')
-                );
+            $data = array(
+                'no_inventaris' => $no_inventaris,
+                'nama_koleksi' => $nama_koleksi,
+                'jenis' => $jenis,
+                'tanggal_pembuatan' => $tanggal_pembuatan,
+                'bentuk' => $bentuk,
+                'nilai' => $nilai,
+                'bahan' => $bahan,
+                'teknik_pembuatan' => $teknik_pembuatan,
+                'deskripsi' => $deskripsi,
+                'tanggal_masuk' => $tanggal_masuk,
+                'daerah_asal' => $daerah_asal,
+                'banyaknya' => $banyaknya,
+                'ukuran' => $ukuran,
+                'bentuk' => $bentuk,
+                'sejarah' => $sejarah,
+                'kondisi' => $kondisi,
+                'tanggal_pemakaian' => $tanggal_pemakaian,
+                'warna' => $warna,
+                'kode_qr' => base_url(substr($folder,2))
+            );
+            
+            $config['allowed_types'] = 'gif|jpg|png|jpeg|mp3|wav';
+            $config['file_name'] = $no_inventaris;            
+
                 
-                $this->m_koleksi->tambah($data,'koleksi');
-            }
 
-            redirect(base_url('koleksi'));
+                if(isset($_FILES['foto']) && $_FILES['foto']['size'] != 0){
+                    $config['upload_path'] = "./uploads/images/";
+
+                    $this->load->library('upload', $config);
+
+                    if ($this->upload->do_upload('foto')){
+                        $data['foto'] = $this->upload->data('full_path');
+                    }
+                }
+                if(isset($_FILES['audio'])){
+                    $config['upload_path'] = "./uploads/audio/";
+
+                    $this->load->library('upload', $config);
+
+                    print_r($this->upload->do_upload());
+
+                    if ($this->upload->do_upload('audio')){
+                        $data['audio'] = $this->upload->data('full_path');                        
+                    }else{
+                        echo 'woy';
+                    }
+                }
+                else{
+                    echo 'w';
+                }
+                print_r($data);
+                //$this->m_koleksi->tambah($data);
+            //redirect(base_url('koleksi'));
         }
+    }
 
-        
-        
-        
+    function hapus($no_inventaris){
+            $this->m_koleksi->hapus($no_inventaris);
+           redirect(base_url('koleksi'));
     }
 
 }
