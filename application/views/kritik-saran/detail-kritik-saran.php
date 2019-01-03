@@ -6,7 +6,7 @@
         <th>No. Telp</th>
         <th>Kritik Saran</th>
     </tr>
-    <?php 
+    <?php
         $no = 1;
     ?>
     <tr>

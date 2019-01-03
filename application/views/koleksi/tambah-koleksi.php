@@ -7,7 +7,7 @@
 						Koleksi *</label>
 					<input type="text" name="nama_koleksi" value="<?php if(isset($nama_koleksi)){echo $nama_koleksi;} ?>" class="form-control"
 					 <?php if(form_error('nama_koleksi') !=null){echo ' id="inputError"' ;}?>>
-					<?php 
+					<?php
                         if(form_error('nama_koleksi') != null){
                             echo form_error('nama_koleksi', '<p class="text-danger">', '</p>');
                         }
@@ -23,7 +23,7 @@
 						<input type="radio" name="jenis" id="optionsRadiosInline2" value="filateli" <?php if(isset($jenis) && $jenis=='filateli'
 						 ){echo 'checked' ;} ?>> Filateli
 					</label>
-					<?php 
+					<?php
                         if(form_error('jenis') != null){
                             echo form_error('jenis', '<p class="text-danger">', '</p>');
                         }
@@ -66,7 +66,7 @@
 						Masuk *</label>
 					<input type="date" name="tanggal_masuk" value="<?php if(isset($tanggal_masuk)){echo $tanggal_masuk;} ?>" class="form-control"
 					 <?php if(form_error('tanggal_masuk') !=null){echo ' id="inputError"' ;}?>>
-					<?php 
+					<?php
                         if(form_error('tanggal_masuk') != null){
                             echo form_error('tanggal_masuk', '<p class="text-danger">', '</p>');
                         }
@@ -105,14 +105,15 @@
 					<label class="control-label">Kondisi</label>
 					<textarea class="form-control" rows="3" name="kondisi"><?php if(isset($kondisi)){echo $kondisi;} ?></textarea>
 				</div>
-                
+
 			</div>
             <div class="col-lg-12">
             <div class="form-group text-right">
                 <input type="submit" value="Tambah" class="btn btn-primary">
 				</div>
+				<a href="javascript:history.go(-1)">Batal</a>
                 </div>
-			
+
 		</form>
 	</div>
 </div>

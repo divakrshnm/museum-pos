@@ -24,3 +24,6 @@
 <td><?php echo ucwords($petugas['role']);?></td>
 </tr>
 </table>
+<a href="<?php echo base_url('petugas/ubah/'.$petugas["nik"].'');?>" class="btn btn-primary">Ubah</a>
+<a href="<?php echo base_url('petugas/hapus/'.$petugas["nik"].'');?>" class="btn btn-danger">Hapus</a>
+<a href="javascript:history.go(-1)">Kembali</a>

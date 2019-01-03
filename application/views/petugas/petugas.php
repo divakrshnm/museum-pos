@@ -1,6 +1,12 @@
 <div class="row">
+<div class="col-lg-6">
+
+<h2>Data Koleksi</h2>
+</div>
+<div class="col-lg-6 text-right">
+<a href="<?php echo base_url().'petugas/tambah'; ?>" class="btn btn-primary" style="margin-top:17px">Tambah Data</a>
+</div>
 	<div class="col-lg-12">
-		<h2>Data Petugas</h2>
 		<div class="table-responsive">
 			<table class="table table-bordered table-hover table-striped">
 				<thead>
@@ -29,8 +35,8 @@
 						</td>
 						<td>
 							<a href="<?php echo base_url('petugas/lihat/'.$data["nik"].'');?>">Lihat</a>
-							<a href="<?php echo base_url('petugas/ubah');?>">Ubah</a>
-							<a href="<?php echo base_url('petugas/hapus');?>">Hapus</a>
+							<a href="<?php echo base_url('petugas/ubah/'.$data["nik"].'');?>">Ubah</a>
+							<a href="<?php echo base_url('petugas/hapus/'.$data["nik"].'');?>">Hapus</a>
 						</td>
 					</tr>
 					<?php } ?>
